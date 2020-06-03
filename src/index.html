@@ -4,11 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>my Excel</title>
 </head>
 <body>
     <div class="container" id="app">
-        <h1>Soon i start progging</h1>
+        <div class="excel">
+
+            <div class="excel__header">
+                <input type="text" class="input" value="Новая таблица">
+                <div>
+                    <div class="button">
+                        <i class="material-icons">exit_to_app</i>
+                    </div>
+
+                    <div class="button">
+                        <i class="material-icons">delete</i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="excel__toolbar">
+                <div class="button">
+                    <i class="material-icons">format_align_left</i>
+                </div>
+                <div class="button">
+                    <i class="material-icons">format_align_center</i>
+                </div>
+                <div class="button">
+                    <i class="material-icons">format_align_right</i>
+                </div>
+                <div class="button">
+                    <i class="material-icons">format_bold</i>
+                </div>
+                <div class="button">
+                    <i class="material-icons">format_italic</i>
+                </div>
+                <div class="button">
+                    <i class="material-icons">format_underline</i>
+                </div>
+            </div>
+
+            <div class="excel__formula">
+                <div class="info">fx</div>
+                <div class="input" contenteditable spellcheck="false"></div>
+            </div>
+            <div class="excel__table"></div>
+        </div>
     </div>
 </body>
 </html>
