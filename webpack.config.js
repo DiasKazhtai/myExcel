@@ -4,6 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
+// const isProd = procces.env.NODE_ENV === 'produciton'
+// const isDev = !isProd
+
+
 
 
 module.exports = {
@@ -28,6 +32,9 @@ module.exports = {
             ],
           }),
     ],
+    devServer: {
+        port: 42000,
+    },
     module: {
         rules: [
           {
@@ -35,9 +42,19 @@ module.exports = {
             use: [MiniCssExtractPlugin.loader, 'css-loader'],
           },
           {
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ["@babel/preset-env"]
+                }
+            }
+        },
+          {
             test: /\.s[ac]ss$/i,
             use: [
-               MiniCssExtractPlugin.loader,
+              'style-loader',
               'css-loader',
               'sass-loader',
             ],
