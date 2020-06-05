@@ -1,7 +1,7 @@
 import {ExcelComponent} from '../../core/ExcelComponent'
 
 export class Header extends ExcelComponent {
-  static className(){
+  static className (){
     return 'excel__header'
   }
 
