@@ -4,8 +4,8 @@ import {$} from '../../core/dom'
 
 export class Table extends ExcelComponent {
   static className (){
-    return 'excel__table'
-  }
+      return 'excel__table'
+    }
 
   constructor($root) {
     super($root, {
@@ -20,32 +20,26 @@ export class Table extends ExcelComponent {
   onMousedown(event) {
     if (event.target.dataset.resize) {
       const $resizer = $(event.target)
+      // const $parent = $resizer.$el.parentNode // bad!
+      // const $parent = $resizer.$el.closest('.column') // better but bad
       const $parent = $resizer.closest('[data-type="resizable"]')
       const coords = $parent.getCoords()
-      const numForResize =  event.target.getAttribute('data-index')
-      const elemForResize = document.querySelectorAll(`[data-index = "${numForResize}"]`)
-     
-      if(event.target.classList.contains('col-resize')){
-        document.onmousemove = e => {
+      const type = $resizer.data.resize
+
+      const cells = this.$root.findAll(`[data-col="${$parent.data.col}"]`)
+
+      document.onmousemove = e => {
+        if (type === 'col') {
           const delta = e.pageX - coords.right
           const value = coords.width + delta
           $parent.$el.style.width = value + 'px'
-          elemForResize.forEach((elem, index)=>{
-            elem.style = `width:${value}px`
-          })
-        }
-      }
-      if(event.target.classList.contains('row-resize')){
-        document.onmousemove = e => {
+          cells.forEach(el => el.style.width = value + 'px')
+        } else {
           const delta = e.pageY - coords.bottom
-          const value = coords.height + Math.floor(delta)
+          const value = coords.height + delta
           $parent.$el.style.height = value + 'px'
-          elemForResize.forEach((elem, index)=>{
-            elem.style = `height:${value}px`
-          })
         }
       }
-    
 
       document.onmouseup = () => {
         document.onmousemove = null
@@ -53,6 +47,9 @@ export class Table extends ExcelComponent {
     }
   }
 }
-  
 
+// 589 msScripting
+// 2433 msRendering
 
+// 440 msScripting
+// 1771 msRendering
