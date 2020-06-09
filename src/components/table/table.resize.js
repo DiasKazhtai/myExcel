@@ -7,7 +7,7 @@ export function resizeHandler($root, event) {
   const type = $resizer.data.resize
   const sideProp = type === 'col' ? 'bottom' : 'right'
   let value
-
+  const array = new Array()
   $resizer.css({
     opacity: 1,
     [sideProp]: '-5000px'
