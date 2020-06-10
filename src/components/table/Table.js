@@ -30,7 +30,9 @@ export class Table extends ExcelComponent {
     const $cell = this.$root.find('[data-id="0:0"]')
     this.selection.select($cell)
   }
-  arrow (){}
+  arrow (){
+    console.log('')
+  }
   onMousedown(event) {
     if (shouldResize(event)) {
       resizeHandler(this.$root, event)
