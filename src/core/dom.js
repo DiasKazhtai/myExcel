@@ -30,6 +30,11 @@ class Dom {
     return $(this.$el.querySelector(selector))
   }
 
+  focus(){
+     this.$el.focus()
+     return this
+  }
+
   append(node) {
     if (node instanceof Dom) {
       node = node.$el
