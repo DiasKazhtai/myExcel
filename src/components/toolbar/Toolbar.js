@@ -5,16 +5,14 @@ export class Toolbar extends ExcelComponent {
     return 'excel__toolbar'
   }
 
-  constructor($root){
+  constructor($root, options){
     super($root, {
       name : 'Toolbar',
-      listeners:['click']
+      ...options
     })
   }
 
-  onClick(event){
-    console.log(event.target)
-  }
+
 
   toHTML() {
     return `

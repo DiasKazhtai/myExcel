@@ -10,9 +10,11 @@ export class Table extends ExcelComponent {
     return 'excel__table'
   }
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
-      listeners: ['mousedown', 'keydown']
+      name: 'Table',
+      listeners: ['mousedown', 'keydown'],
+      ...options
     })
   }
 
@@ -27,8 +29,13 @@ export class Table extends ExcelComponent {
   init() {
     super.init()
 
+
     const $cell = this.$root.find('[data-id="0:0"]')
     this.selection.select($cell)
+
+    this.emmiter.subscribe('it is working', text => {
+      this.selection.current.text(text)
+    })
   }
   
   onKeydown (event){
