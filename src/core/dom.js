@@ -13,12 +13,12 @@ class Dom {
     return this.$el.outerHTML.trim()
   }
 
-  text(text){
-    if(typeof text === 'string'){
+  text(text) {
+    if (typeof text === 'string') {
       this.$el.textContent = text
       return this
     }
-    if(this.$el.tagName.toLowerCase() === 'input'){
+    if (this.$el.tagName.toLowerCase() === 'input') {
       return this.$el.value.trim()
     }
     return this.$el.textContent.trim()
@@ -39,11 +39,6 @@ class Dom {
 
   find(selector) {
     return $(this.$el.querySelector(selector))
-  }
-
-  focus(){
-     this.$el.focus()
-     return this
   }
 
   append(node) {
@@ -95,12 +90,19 @@ class Dom {
     return this.data.id
   }
 
+  focus() {
+    this.$el.focus()
+    return this
+  }
+
   addClass(className) {
     this.$el.classList.add(className)
+    return this
   }
 
   removeClass(className) {
     this.$el.classList.remove(className)
+    return this
   }
 }
 

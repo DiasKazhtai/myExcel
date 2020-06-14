@@ -70,26 +70,31 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background-color: $primary-color;
+    background: $primary-color;
     opacity: 0;
     z-index: 1000;
+
+    &:hover {
+      opacity: 1!important;
+    }
   }
 
   .col-resize {
     top: 0;
     width: 4px;
+
+    &:hover {
+      cursor: col-resize;
+    }
   }
-  .col-resize:hover {
-    opacity: 1;
-    cursor: col-resize;
-  }
-  .row-resize{
+
+  .row-resize {
     left: 0;
     height: 4px;
-  }
-  .row-resize:hover {
-    opacity: 1;
-    cursor: row-resize;
+
+    &:hover {
+      cursor: row-resize;
+    }
   }
 
 }
